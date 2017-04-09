@@ -5,12 +5,12 @@ namespace DigistoreIpn;
 use ActionDecisionHandler\ActionDecisionHandler;
 use ActionDecisionHandler\ActionDecisionHandlerInterface;
 use DigistoreAuthenticator\DigistoreAuthenticatorInterface;
-use DigistoreAuthenticator\NullDigistoreAuthenticator;
+use DigistoreAuthenticator\Sha512Authenticator;
 use EventHandler\EventHandlerInterface;
 use Psr\Log\LoggerInterface;
-use RequestDataValidator\NullRequestDataValidator;
 use RequestDataValidator\RequestDataValidatorInterface;
 use Exceptions\MissingEventhandler;
+use RequestDataValidator\StandardRequestDataValidator;
 
 final class DigistoreIpn
 {
@@ -56,26 +56,35 @@ final class DigistoreIpn
      * @param string $shaSign
      * @param array $requestData
      */
-    public function __construct(LoggerInterface $logger, string $shaSign, array $requestData)
+    public final function __construct(LoggerInterface $logger, string $shaSign, array $requestData)
     {
         $this->shaSign = $shaSign;
         $this->requestData = $requestData;
         $this->logger = $logger;
         $this->actionDescisionHandler = new ActionDecisionHandler();
-        $this->digistoreAuthenticator = new NullDigistoreAuthenticator();
-        $this->requestDataValidator = new NullRequestDataValidator();
         $this->actionDescisionHandler->setLogger($logger);
+        $this->digistoreAuthenticator = new Sha512Authenticator();
+        $this->requestDataValidator = new StandardRequestDataValidator();
     }
 
     /**
      * @param DigistoreAuthenticatorInterface $authenticator
      * @return DigistoreIpn
      */
-    public final function setDigistoreAuthenticator(DigistoreAuthenticatorInterface $authenticator) : self
+    public final function setAuthenticator(DigistoreAuthenticatorInterface $authenticator) : self
     {
         $this->digistoreAuthenticator = $authenticator;
 
         return $this;
+    }
+
+    /**
+     * @param RequestDataValidatorInterface $validator
+     * @return DigistoreIpn
+     */
+    public final function setDataValidator(RequestDataValidatorInterface $validator) : self
+    {
+        $this->digistoreAuthenticator = $validator;
     }
 
     /**
