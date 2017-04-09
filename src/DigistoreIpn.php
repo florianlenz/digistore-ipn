@@ -85,6 +85,8 @@ final class DigistoreIpn
     public final function setDataValidator(RequestDataValidatorInterface $validator) : self
     {
         $this->digistoreAuthenticator = $validator;
+
+        return $this;
     }
 
     /**
