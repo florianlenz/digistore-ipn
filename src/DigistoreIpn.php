@@ -101,12 +101,14 @@ final class DigistoreIpn
         }
 
         //Validate Digistore Request sha sign
-        if(false ===  $this->digistoreAuthenticator->auth($this->shaSign, $this->requestData)){
+        if(true !==  $this->digistoreAuthenticator->auth($this->shaSign, $this->requestData)){
             return;
         }
 
-        //Validate Data
-        $this->requestDataValidator->validate($this->requestData);
+        //Validate request data
+        if(true !== $this->requestDataValidator->validate($this->requestData)){
+            return;
+        }
 
         //Handle actions
         $this->actionDescisionHandler->handle($this->requestData, $this->eventHandler);

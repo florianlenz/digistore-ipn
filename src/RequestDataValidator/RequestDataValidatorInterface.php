@@ -4,5 +4,9 @@ namespace RequestDataValidator;
 
 interface RequestDataValidatorInterface
 {
-    public function validate(array $data);
+    /**
+     * @param array $data
+     * @return bool
+     */
+    public function validate(array $data) : bool;
 }
