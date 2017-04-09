@@ -7,9 +7,9 @@ use ActionDecisionHandler\ActionDecisionHandlerInterface;
 use DigistoreAuthenticator\DigistoreAuthenticatorInterface;
 use DigistoreAuthenticator\Sha512Authenticator;
 use EventHandler\EventHandlerInterface;
+use Exceptions\MissingEventhandlerException;
 use Psr\Log\LoggerInterface;
 use RequestDataValidator\RequestDataValidatorInterface;
-use Exceptions\MissingEventhandler;
 use RequestDataValidator\StandardRequestDataValidator;
 
 final class DigistoreIpn
@@ -105,7 +105,7 @@ final class DigistoreIpn
         //Check if all events do exist
         foreach(DigistoreEvents::EVENTS as $dsEvent){
             if(false === array_key_exists($dsEvent, $this->eventHandler)){
-                throw new MissingEventhandler($dsEvent);
+                throw new MissingEventhandlerException($dsEvent);
             }
         }
 

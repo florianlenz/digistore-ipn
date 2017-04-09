@@ -2,7 +2,7 @@
 
 namespace Exceptions;
 
-class MissingEventhandler extends \Exception
+class MissingEventhandlerException extends \Exception
 {
     public function __construct(string $event)
     {
