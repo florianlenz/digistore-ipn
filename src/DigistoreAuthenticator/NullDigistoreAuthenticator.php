@@ -1,17 +1,10 @@
 <?php
 
-namespace DigistoreAuthentificator;
-
-use Psr\Log\LoggerInterface;
+namespace DigistoreAuthenticator;
 
 class NullDigistoreAuthenticator implements DigistoreAuthenticatorInterface
 {
-    public function setLogger(LoggerInterface $loggerInterface)
-    {
-
-    }
-
-    public function validate(string $shaSign, array $requestData)
+    public function auth(string $shaSign, array $requestData)
     {
 
     }

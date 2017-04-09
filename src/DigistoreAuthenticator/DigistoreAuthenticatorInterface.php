@@ -1,13 +1,8 @@
 <?php
 
-namespace DigistoreAuthentificator;
-
-use Psr\Log\LoggerInterface;
+namespace DigistoreAuthenticator;
 
 interface DigistoreAuthenticatorInterface
 {
-
-    public function setLogger(LoggerInterface $loggerInterface);
-
-    public function validate(string $shaSign, array $requestData);
+    public function auth(string $shaSign, array $requestData);
 }

@@ -4,7 +4,7 @@ namespace RequestDataValidator;
 
 class NullRequestDataValidator implements RequestDataValidatorInterface
 {
-    public function validateRequestData(array $data)
+    public function validate(array $data)
     {
 
     }

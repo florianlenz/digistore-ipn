@@ -4,8 +4,8 @@ namespace DigistoreIpn;
 
 use ActionDecisionHandler\ActionDecisionHandler;
 use ActionDecisionHandler\ActionDecisionHandlerInterface;
-use DigistoreAuthentificator\DigistoreAuthenticatorInterface;
-use DigistoreAuthentificator\NullDigistoreAuthenticator;
+use DigistoreAuthenticator\DigistoreAuthenticatorInterface;
+use DigistoreAuthenticator\NullDigistoreAuthenticator;
 use EventHandler\EventHandlerInterface;
 use Psr\Log\LoggerInterface;
 use RequestDataValidator\NullRequestDataValidator;
@@ -64,6 +64,7 @@ final class DigistoreIpn
         $this->actionDescisionHandler = new ActionDecisionHandler();
         $this->digistoreAuthenticator = new NullDigistoreAuthenticator();
         $this->requestDataValidator = new NullRequestDataValidator();
+        $this->actionDescisionHandler->setLogger($logger);
     }
 
     /**
@@ -99,13 +100,11 @@ final class DigistoreIpn
             }
         }
 
-        //Log got ds data
-
         //Validate Digistore Request regarding sha sign
-        $this->digistoreAuthenticator->validate($this->shaSign, $this->requestData);
+        $this->digistoreAuthenticator->auth($this->shaSign, $this->requestData);
 
         //Validate Data
-        $this->requestDataValidator->validateRequestData($this->requestData);
+        $this->requestDataValidator->validate($this->requestData);
 
         //Handle actions
         $this->actionDescisionHandler->handle($this->requestData, $this->eventHandler);
