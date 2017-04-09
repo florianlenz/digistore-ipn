@@ -100,8 +100,10 @@ final class DigistoreIpn
             }
         }
 
-        //Validate Digistore Request regarding sha sign
-        $this->digistoreAuthenticator->auth($this->shaSign, $this->requestData);
+        //Validate Digistore Request sha sign
+        if(false ===  $this->digistoreAuthenticator->auth($this->shaSign, $this->requestData)){
+            return;
+        }
 
         //Validate Data
         $this->requestDataValidator->validate($this->requestData);
