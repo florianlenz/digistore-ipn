@@ -6,7 +6,7 @@ use ActionDecisionHandler\ActionDecisionHandler;
 use ActionDecisionHandler\ActionDecisionHandlerInterface;
 use DigistoreAuthenticator\DigistoreAuthenticatorInterface;
 use DigistoreAuthenticator\Sha512Authenticator;
-use EventHandler\EventHandlerInterface;
+use EventHandler\EventHandler;
 use Exceptions\MissingEventhandlerException;
 use Psr\Log\LoggerInterface;
 use RequestDataValidator\RequestDataValidatorInterface;
@@ -91,12 +91,13 @@ final class DigistoreIpn
 
     /**
      * @param string $eventName
-     * @param EventHandlerInterface $eventHandler
+     * @param \Closure $eventHandler
+     * @param array $closureUseData
      * @return DigistoreIpn
      */
-    public final function addEventHandler(string $eventName, EventHandlerInterface $eventHandler) : self
+    public final function addEventHandler(string $eventName, \Closure $eventHandler, array $closureUseData) : self
     {
-        $this->eventHandler[$eventName] = $eventHandler;
+        $this->eventHandler[$eventName] = new EventHandler($eventHandler, $closureUseData);
 
         return $this;
     }

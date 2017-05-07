@@ -3,6 +3,7 @@
 namespace ActionDecisionHandler;
 
 use DigistoreIpn\DigistoreEvents;
+use EventHandler\EventHandler;
 use EventHandler\EventHandlerInterface;
 use Exceptions\UnknownEventException;
 use Psr\Log\LoggerInterface;
@@ -37,37 +38,37 @@ final class ActionDecisionHandler implements ActionDecisionHandlerInterface
         switch($dsEvent){
             case DigistoreEvents::EVENT_ON_PAYMENT : {
                 $this->logMessage(DigistoreEvents::EVENT_ON_PAYMENT, $requestData);
-                $this->getEventHandler(DigistoreEvents::EVENT_ON_PAYMENT)->handle($requestData);
+                $this->executeEvent(DigistoreEvents::EVENT_ON_PAYMENT);
                 break;
             }
             case DigistoreEvents::EVENT_ON_REFUND : {
                 $this->logMessage(DigistoreEvents::EVENT_ON_REFUND, $requestData);
-                $this->getEventHandler(DigistoreEvents::EVENT_ON_REFUND)->handle($requestData);
+                $this->executeEvent(DigistoreEvents::EVENT_ON_REFUND);
                 break;
             }
             case DigistoreEvents::EVENT_ON_CHARGEBACK : {
                 $this->logMessage(DigistoreEvents::EVENT_ON_CHARGEBACK, $requestData);
-                $this->getEventHandler(DigistoreEvents::EVENT_ON_CHARGEBACK)->handle($requestData);
+                $this->executeEvent(DigistoreEvents::EVENT_ON_CHARGEBACK);
                 break;
             }
             case DigistoreEvents::EVENT_ON_PAYMENT_MISSED : {
                 $this->logMessage(DigistoreEvents::EVENT_ON_PAYMENT_MISSED, $requestData);
-                $this->getEventHandler(DigistoreEvents::EVENT_ON_PAYMENT_MISSED)->handle($requestData);
+                $this->executeEvent(DigistoreEvents::EVENT_ON_PAYMENT_MISSED);
                 break;
             }
             case DigistoreEvents::EVENT_ON_REBILL_CANCELLED : {
                 $this->logMessage(DigistoreEvents::EVENT_ON_REBILL_CANCELLED, $requestData);
-                $this->getEventHandler(DigistoreEvents::EVENT_ON_REBILL_CANCELLED)->handle($requestData);
+                $this->executeEvent(DigistoreEvents::EVENT_ON_REBILL_CANCELLED);
                 break;
             }
             case DigistoreEvents::EVENT_ON_REBILL_RESUMED : {
                 $this->logMessage(DigistoreEvents::EVENT_ON_REBILL_RESUMED, $requestData);
-                $this->getEventHandler(DigistoreEvents::EVENT_ON_REBILL_RESUMED)->handle($requestData);
+                $this->executeEvent(DigistoreEvents::EVENT_ON_REBILL_RESUMED);
                 break;
             }
             case DigistoreEvents::EVENT_LAST_PAID_DAY : {
                 $this->logMessage(DigistoreEvents::EVENT_LAST_PAID_DAY, $requestData);
-                $this->getEventHandler(DigistoreEvents::EVENT_LAST_PAID_DAY)->handle($requestData);
+                $this->executeEvent(DigistoreEvents::EVENT_LAST_PAID_DAY);
                 break;
             }
             default : {
@@ -78,11 +79,17 @@ final class ActionDecisionHandler implements ActionDecisionHandlerInterface
 
     /**
      * @param $dsEvent
-     * @return EventHandlerInterface
+     * @return \Closure
      */
-    private final function getEventHandler($dsEvent) : EventHandlerInterface
+    private final function executeEvent(string $dsEvent)
     {
-        return $this->eventHandlers[$dsEvent];
+        /** @var EventHandler $eventHandler */
+        $eventHandler = $this->eventHandlers[$dsEvent];
+
+        call_user_func_array(
+            $eventHandler->getEventHandler(),
+            $eventHandler->getEventHandlerData()
+        );
     }
 
     /**

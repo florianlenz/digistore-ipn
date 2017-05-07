@@ -47,7 +47,7 @@ class DigistoreIpnTest extends TestCase
         $dsIpn->setAuthenticator($nullRequestDataValidator);
 
         foreach(DigistoreEvents::EVENTS as $event){
-            $dsIpn->addEventHandler($event, new NullEventHandler());
+            $dsIpn->addEventHandler($event, function(){}, []);
         }
 
         $dsIpn->handle();

@@ -1,4 +1,4 @@
-#Digistore IPN (Instant Paypent Notification) SDK (Unofficial)
+# Digistore IPN (Instant Paypent Notification) SDK (Unofficial)
 
 Digistore IPN documentation: https://doc.digistore24.com/technics/technical-access-to-the-system/ipn/further-information-about-the-digistore24-ipn-interface/?lang=en
 

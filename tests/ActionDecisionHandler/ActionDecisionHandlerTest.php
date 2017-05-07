@@ -4,6 +4,7 @@ namespace tests\ActionDecisionHandler;
 
 use ActionDecisionHandler\ActionDecisionHandler;
 use DigistoreIpn\DigistoreEvents;
+use EventHandler\EventHandler;
 use EventHandler\NullEventHandler;
 use Monolog\Logger;
 use PHPUnit\Framework\TestCase;
@@ -30,7 +31,7 @@ class ActionDecisionHandlerTest extends TestCase
 
         $handler->setLogger($logger);
 
-        $handler->handle(['event' => $event], [$event => new NullEventHandler()]);
+        $handler->handle(['event' => $event, 'order_id' => '1234'], [$event => new EventHandler(function(){}, [])]);
 
     }
 
