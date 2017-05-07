@@ -1,8 +1,8 @@
 <?php
 
-namespace DigistoreAuthenticator;
+namespace DigistoreIpn\DigistoreAuthenticator;
 
-use Exceptions\AccessDeniedException;
+use DigistoreIpn\Exceptions\AccessDeniedException;
 
 class Sha512Authenticator implements DigistoreAuthenticatorInterface
 {

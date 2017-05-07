@@ -1,6 +1,6 @@
 <?php
 
-namespace DigistoreAuthenticator;
+namespace DigistoreIpn\DigistoreAuthenticator;
 
 class NullDigistoreAuthenticator implements DigistoreAuthenticatorInterface
 {

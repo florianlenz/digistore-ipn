@@ -2,7 +2,7 @@
 
 namespace tests\Exceptions;
 
-use Exceptions\UnknownEventException;
+use DigistoreIpn\Exceptions\UnknownEventException;
 use PHPUnit\Framework\TestCase;
 
 class UnknownEventExceptionTest extends TestCase

@@ -2,14 +2,13 @@
 
 namespace tests;
 
-use DigistoreAuthenticator\NullDigistoreAuthenticator;
+use DigistoreIpn\DigistoreAuthenticator\NullDigistoreAuthenticator;
 use DigistoreIpn\DigistoreEvents;
 use DigistoreIpn\DigistoreIpn;
-use EventHandler\NullEventHandler;
+use DigistoreIpn\Exceptions\MissingEventhandlerException;
+use DigistoreIpn\RequestDataValidator\NullRequestDataValidator;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\NullLogger;
-use RequestDataValidator\NullRequestDataValidator;
-use Exceptions\MissingEventhandlerException;
 
 class DigistoreIpnTest extends TestCase
 {
@@ -18,7 +17,7 @@ class DigistoreIpnTest extends TestCase
      */
     public function testMissingEvent()
     {
-        $this->expectException(MissingEventHandlerException::class);
+        $this->expectException(MissingEventhandlerException::class);
 
         $dsIpn = new DigistoreIpn(new NullLogger(), '', []);
         $dsIpn->setAuthenticator(new NullDigistoreAuthenticator());

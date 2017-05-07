@@ -2,15 +2,15 @@
 
 namespace DigistoreIpn;
 
-use ActionDecisionHandler\ActionDecisionHandler;
-use ActionDecisionHandler\ActionDecisionHandlerInterface;
-use DigistoreAuthenticator\DigistoreAuthenticatorInterface;
-use DigistoreAuthenticator\Sha512Authenticator;
-use EventHandler\EventHandler;
-use Exceptions\MissingEventhandlerException;
+use DigistoreIpn\ActionDecisionHandler\ActionDecisionHandler;
+use DigistoreIpn\ActionDecisionHandler\ActionDecisionHandlerInterface;
+use DigistoreIpn\DigistoreAuthenticator\DigistoreAuthenticatorInterface;
+use DigistoreIpn\DigistoreAuthenticator\Sha512Authenticator;
+use DigistoreIpn\EventHandler\EventHandler;
+use DigistoreIpn\Exceptions\MissingEventhandlerException;
+use DigistoreIpn\RequestDataValidator\RequestDataValidatorInterface;
+use DigistoreIpn\RequestDataValidator\StandardRequestDataValidator;
 use Psr\Log\LoggerInterface;
-use RequestDataValidator\RequestDataValidatorInterface;
-use RequestDataValidator\StandardRequestDataValidator;
 
 final class DigistoreIpn
 {

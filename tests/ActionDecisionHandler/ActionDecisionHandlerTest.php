@@ -2,14 +2,12 @@
 
 namespace tests\ActionDecisionHandler;
 
-use ActionDecisionHandler\ActionDecisionHandler;
+use DigistoreIpn\ActionDecisionHandler\ActionDecisionHandler;
 use DigistoreIpn\DigistoreEvents;
-use EventHandler\EventHandler;
-use EventHandler\NullEventHandler;
+use DigistoreIpn\EventHandler\EventHandler;
+use DigistoreIpn\Exceptions\UnknownEventException;
 use Monolog\Logger;
 use PHPUnit\Framework\TestCase;
-use Exceptions\UnknownEventException;
-use Psr\Log\NullLogger;
 
 class ActionDecisionHandlerTest extends TestCase
 {

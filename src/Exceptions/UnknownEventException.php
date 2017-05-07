@@ -1,6 +1,6 @@
 <?php
 
-namespace Exceptions;
+namespace DigistoreIpn\Exceptions;
 
 class UnknownEventException extends \Exception
 {

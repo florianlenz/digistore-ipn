@@ -16,11 +16,11 @@
     },
     "autoload": {
         "psr-4": {
-            "ActionDecisionHandler\\": "src/ActionDecisionHandler",
-            "DigistoreAuthenticator\\": "src/DigistoreAuthenticator",
-            "Exceptions\\": "src/Exceptions",
-            "EventHandler\\": "src/EventHandler",
-            "RequestDataValidator\\": "src/RequestDataValidator",
+            "DigistoreIpn\\ActionDecisionHandler\\": "src/ActionDecisionHandler",
+            "DigistoreIpn\\DigistoreAuthenticator\\": "src/DigistoreAuthenticator",
+            "DigistoreIpn\\Exceptions\\": "src/Exceptions",
+            "DigistoreIpn\\EventHandler\\": "src/EventHandler",
+            "DigistoreIpn\\RequestDataValidator\\": "src/RequestDataValidator",
             "DigistoreIpn\\" : "src"
         }
     }

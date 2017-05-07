@@ -2,9 +2,9 @@
 
 namespace tests\DigistoreAuthenticator;
 
-use DigistoreAuthenticator\Sha512Authenticator;
+use DigistoreIpn\DigistoreAuthenticator\Sha512Authenticator;
+use DigistoreIpn\Exceptions\AccessDeniedException;
 use PHPUnit\Framework\TestCase;
-use Exceptions\AccessDeniedException;
 
 class Sha512AuthenticatorTest extends TestCase
 {

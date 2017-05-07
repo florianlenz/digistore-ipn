@@ -1,8 +1,8 @@
 <?php
 
-namespace RequestDataValidator;
+namespace DigistoreIpn\RequestDataValidator;
 
-use Exceptions\MissingDataException;
+use DigistoreIpn\Exceptions\MissingDataException;
 
 final class StandardRequestDataValidator implements RequestDataValidatorInterface
 {

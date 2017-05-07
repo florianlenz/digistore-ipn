@@ -2,7 +2,7 @@
 
 namespace tests\Exceptions;
 
-use Exceptions\AccessDeniedException;
+use DigistoreIpn\Exceptions\AccessDeniedException;
 use PHPUnit\Framework\TestCase;
 
 class AccessDeniedExceptionTest extends TestCase

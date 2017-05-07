@@ -2,7 +2,7 @@
 
 namespace tests\Exceptions;
 
-use Exceptions\MissingDataException;
+use DigistoreIpn\Exceptions\MissingDataException;
 use PHPUnit\Framework\TestCase;
 
 class MissingDataExceptionTest extends TestCase

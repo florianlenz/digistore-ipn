@@ -1,11 +1,10 @@
 <?php
 
-namespace ActionDecisionHandler;
+namespace DigistoreIpn\ActionDecisionHandler;
 
 use DigistoreIpn\DigistoreEvents;
-use EventHandler\EventHandler;
-use EventHandler\EventHandlerInterface;
-use Exceptions\UnknownEventException;
+use DigistoreIpn\EventHandler\EventHandler;
+use DigistoreIpn\Exceptions\UnknownEventException;
 use Psr\Log\LoggerInterface;
 
 final class ActionDecisionHandler implements ActionDecisionHandlerInterface

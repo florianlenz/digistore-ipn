@@ -2,7 +2,7 @@
 
 namespace tests\DigistoreAuthenticator;
 
-use DigistoreAuthenticator\NullDigistoreAuthenticator;
+use DigistoreIpn\DigistoreAuthenticator\NullDigistoreAuthenticator;
 use PHPUnit\Framework\TestCase;
 
 class NullDigistoreAuthenticatorTest extends TestCase

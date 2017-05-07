@@ -2,7 +2,7 @@
 
 namespace tests\Exceptions;
 
-use Exceptions\MissingEventhandlerException;
+use DigistoreIpn\Exceptions\MissingEventhandlerException;
 use PHPUnit\Framework\TestCase;
 
 class MissingEventhandlerTest extends TestCase

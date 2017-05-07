@@ -2,8 +2,8 @@
 
 namespace tests\RequestDataValidator;
 
+use DigistoreIpn\RequestDataValidator\NullRequestDataValidator;
 use PHPUnit\Framework\TestCase;
-use RequestDataValidator\NullRequestDataValidator;
 
 class NullRequestDataValidatorTest extends TestCase
 {

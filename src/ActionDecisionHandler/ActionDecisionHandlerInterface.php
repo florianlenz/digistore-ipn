@@ -1,6 +1,6 @@
 <?php
 
-namespace ActionDecisionHandler;
+namespace DigistoreIpn\ActionDecisionHandler;
 
 use Psr\Log\LoggerInterface;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace RequestDataValidator;
+namespace DigistoreIpn\RequestDataValidator;
 
 class NullRequestDataValidator implements RequestDataValidatorInterface
 {

@@ -2,9 +2,9 @@
 
 namespace tests\RequestDataValidator;
 
+use DigistoreIpn\Exceptions\MissingDataException;
+use DigistoreIpn\RequestDataValidator\StandardRequestDataValidator;
 use PHPUnit\Framework\TestCase;
-use RequestDataValidator\StandardRequestDataValidator;
-use Exceptions\MissingDataException;
 
 class StandardRequestDataValidatorTest extends TestCase
 {

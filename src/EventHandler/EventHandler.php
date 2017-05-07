@@ -1,6 +1,6 @@
 <?php
 
-namespace EventHandler;
+namespace DigistoreIpn\EventHandler;
 
 class EventHandler
 {
