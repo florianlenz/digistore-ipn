@@ -95,7 +95,7 @@ final class DigistoreIpn
      * @param array $closureUseData
      * @return DigistoreIpn
      */
-    public final function addEventHandler(string $eventName, \Closure $eventHandler, array $closureUseData) : self
+    public final function addEventHandler(string $eventName, \Closure $eventHandler, array $closureUseData = []) : self
     {
         $this->eventHandler[$eventName] = new EventHandler($eventHandler, $closureUseData);
 
