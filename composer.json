@@ -23,5 +23,10 @@
             "DigistoreIpn\\RequestDataValidator\\": "src/RequestDataValidator",
             "DigistoreIpn\\" : "src"
         }
+    },
+    "scripts" : {
+        "phpunit" : [
+            "vendor/phpunit/phpunit/phpunit --coverage-html .tc --colors=always && open .tc/index.html"
+        ]
     }
 }
