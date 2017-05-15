@@ -52,7 +52,7 @@ class DsShaFunction
             $shaString .= "$key=$value$ipnPassphrase";
         }
 
-        return strtoupper(hash("sha512", $shaString));;
+        return strtoupper(hash("sha512", $shaString));
     }
 
 }

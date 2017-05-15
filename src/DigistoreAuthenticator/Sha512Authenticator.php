@@ -10,7 +10,10 @@ class Sha512Authenticator implements DigistoreAuthenticatorInterface
     {
         $dsShaSign = $requestData['sha_sign'];
 
-        if($dsShaSign !== hash('sha512', $plainDsPassword)){
+        $expectedShaSign = new DsShaFunction($plainDsPassword, $requestData);
+        $expectedShaSign = $expectedShaSign->getHash();
+
+        if($dsShaSign !== $expectedShaSign){
             throw new AccessDeniedException();
         }
 

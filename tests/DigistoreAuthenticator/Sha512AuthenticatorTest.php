@@ -13,10 +13,11 @@ class Sha512AuthenticatorTest extends TestCase
         $sha512Auth = new Sha512Authenticator();
 
         $requestData = [
-            'sha_sign' => '8a5b8b4611dee46b3daf3531fabb2a73a93a2be376eaa240dc115dd5818bd24a533eeee9a46aaa27c8064516e489e60b75533506e774e1979228428c910af275'
+            'parameter' => 'value',
+            'sha_sign' => strtoupper(hash('sha512', "parameter=valuei_am_a_secure_password"))
         ];
 
-        $isAuth = $sha512Auth->auth('testPassword', $requestData);
+        $isAuth = $sha512Auth->auth('i_am_a_secure_password', $requestData);
 
         $this->assertTrue($isAuth);
     }
@@ -28,10 +29,12 @@ class Sha512AuthenticatorTest extends TestCase
         $sha512Auth = new Sha512Authenticator();
 
         $requestData = [
-            'sha_sign' => 'fake_sign'
+            'parameter' => 'value',
+            'sha_sign' => strtoupper(hash('sha512', "parameter=valuei_am_a_secure_password"))
         ];
 
-        $isAuth = $sha512Auth->auth('testPassword', $requestData);
+        //Password is different to the password which was used to create the sha_sign
+        $isAuth = $sha512Auth->auth('password', $requestData);
 
         $this->assertTrue($isAuth);
     }
